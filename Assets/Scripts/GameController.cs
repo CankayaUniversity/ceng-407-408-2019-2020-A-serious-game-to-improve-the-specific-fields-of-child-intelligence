@@ -128,7 +128,6 @@ public class GameController : MonoBehaviour
             Debug.Log("game finished");
             particles.SetActive(true);
             Debug.Log("it took "+countSelect+"guess");
-            SceneManager.LoadScene("MainMenuMindGarden");
         }
     }
 
