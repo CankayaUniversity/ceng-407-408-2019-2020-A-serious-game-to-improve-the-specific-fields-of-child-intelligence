@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fruit
+  - CardTag
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 65162883
+    locked: 0
+  - name: Front
+    uniqueID: 4208881735
+    locked: 0
+  - name: MainLayer
+    uniqueID: 1597681519
+    locked: 0
+  - name: MainCharScore
+    uniqueID: 2938647173
     locked: 0
