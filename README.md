@@ -16,4 +16,4 @@ For download and install the game  <a href="https://drive.google.com/open?id=1Ag
                                       Figure 2.Select the scene
 
 ![](https://user-images.githubusercontent.com/47613498/80614698-6df05700-8a47-11ea-9334-84596d5ea030.png)
-                                      Figure 2.Select the scene
+                                      Figure 3.Play button
