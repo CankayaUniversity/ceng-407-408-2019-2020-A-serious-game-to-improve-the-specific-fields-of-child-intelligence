@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+ 
 public class MathGameManager : MonoBehaviour
 {
     public Text[] numText = new Text[4];
     public int[] numbers = new int[4];
 
     public float time;
-    public float timeLimit;
+    public float timeLimit=10f;
 
     public Text timeText;
 
@@ -18,6 +19,11 @@ public class MathGameManager : MonoBehaviour
 
     public int res;
     public int loc;
+    public int tcnt=0;
+    public int wcnt = 0;
+
+    GameObject[] platforms;
+    MovePlatform mp;
 
     public float score;
     public Text scoreText;
@@ -44,6 +50,9 @@ public class MathGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        platforms = GameObject.FindGameObjectsWithTag("Platform");
+        
+        mp = FindObjectOfType<MovePlatform>();
         for (int i = 0; i < 3; i++)
         {
             buttons[i].GetComponent<Button>().interactable = false;
@@ -69,6 +78,11 @@ public class MathGameManager : MonoBehaviour
             {
                 gameended = true;
                 nextgamebtn.gameObject.SetActive(true);
+                if (!SceneTransition.inselect)
+                {
+                    AllVar.routine_mode_score = AllVar.routine_mode_score + (int)score;
+                }
+               
                 StopGame();
             }
 
@@ -115,6 +129,27 @@ public class MathGameManager : MonoBehaviour
 
                
             }
+            if (tcnt==3)
+            {
+                Debug.Log("hızlan");
+                for (int i = 0; i < 4; i++)
+                {
+                    platforms[i].GetComponent<MovePlatform>().speed += 1f;
+                }
+                timeLimit -= 2f;
+                tcnt = 0;
+            }
+
+            if (wcnt == 3)
+            {
+                Debug.Log("yavaşla");
+                for (int i = 0; i < 4; i++)
+                {
+                    platforms[i].GetComponent<MovePlatform>().speed -= 1f;
+                }
+                timeLimit += 2f;
+                wcnt = 0;
+            }
         }
         
     }
@@ -150,14 +185,19 @@ public class MathGameManager : MonoBehaviour
       if ( buttons[choice].transform.GetChild(0).GetComponent<Text>().text == res.ToString())
         {
             Debug.Log("Correct");
+            wcnt = 0;
             buttons[choice].image.color = Color.green;
             score += 2*time;
             scoreText.text = "Score:" + score.ToString("0");
             src.PlayOneShot(clps[0]);
+            tcnt++;
+            Debug.Log(tcnt);
         }
         else
         {
             Debug.Log("Wrong");
+            tcnt = 0;
+            wcnt++;
             buttons[choice].image.color = Color.red;
             src.PlayOneShot(clps[1]);
             if (score>=10)

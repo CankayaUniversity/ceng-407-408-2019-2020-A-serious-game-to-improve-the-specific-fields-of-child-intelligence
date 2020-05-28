@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BallControl : MonoBehaviour
 {
@@ -19,11 +20,19 @@ public class BallControl : MonoBehaviour
 
     static bool youWin;
 
-    [SerializeField] GameObject winText;
+    public Button nextgamebtn;
+
+    public Button restartgamebtn;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        winText.gameObject.SetActive(false);
+        
+
+        nextgamebtn.gameObject.SetActive(false);
+
+        restartgamebtn.gameObject.SetActive(false);
 
         youWin = false;
 
@@ -50,18 +59,20 @@ public class BallControl : MonoBehaviour
 
             anim.SetBool("BallDead", isDead);
 
-            Invoke("RestartScene",1f);
+            restartgamebtn.gameObject.SetActive(true);
         }
 
         if (youWin)
         {
-            winText.gameObject.SetActive(true);
+            
+
+            nextgamebtn.gameObject.SetActive(true);
 
             moveAllow = false;
 
             anim.SetBool("BallDead",true);
 
-            Invoke("RestartScene", 2f);
+            
         }
     }
 
@@ -79,11 +90,17 @@ public class BallControl : MonoBehaviour
 
     public static void setWin()
     {
+        
         youWin = true;
     }
 
-    void RestartScene()
+   public void RestartScene()
     {
-        SceneManager.LoadScene("Scene01");
+        SceneManager.LoadScene(7);
+    }
+
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

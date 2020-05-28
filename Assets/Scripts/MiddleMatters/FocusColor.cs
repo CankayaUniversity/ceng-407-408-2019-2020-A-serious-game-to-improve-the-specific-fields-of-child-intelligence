@@ -22,8 +22,12 @@ public class FocusColor : MonoBehaviour
     public bool gameended = false;
     public static int middlefinalscore;
     public Button nextgamebtn;
-    
-
+    public bool transfer = true;
+    public Text leveltimetext;
+    private float leveltime = 5f;
+    private float leveltimenow;
+    int tcnt = 0;
+    int wcnt = 0;
 
     public bool gamestart = false;
 
@@ -36,14 +40,24 @@ public class FocusColor : MonoBehaviour
         if (correctcolor == answerbutton)
         {
             Debug.Log("Doğru");
-            score++;
+            score = score + 2;
             scoretext.text = "Score: " + score;
+            wcnt = 0;
+            tcnt++;
+            leveltimenow = leveltime;
             
-           
+
+
         }
         else
         {
+            score--;
+            scoretext.text = "Score: " + score;
             Debug.Log("Yanlış - Doğru cevap "+correctcolor);
+            tcnt = 0;
+            wcnt++;
+            leveltimenow = leveltime;
+
         }
 
         SwapClouds();
@@ -89,7 +103,7 @@ public class FocusColor : MonoBehaviour
     }
     void Start()
     {
-
+        leveltimenow = leveltime;
         if (gamestart)
         {
             ChangeColors();
@@ -98,11 +112,23 @@ public class FocusColor : MonoBehaviour
 
         timetext.text = "Time: " + timestart.ToString();
 
+        leveltimetext.text = "" + leveltime.ToString();
+
         scoretext.text = "Score: " + score;
        
        //ChangeColors();
         
-      
+              
+    }
+
+    public void TransferScore()
+    {
+        if (transfer)
+        {
+            AllVar.routine_mode_score = AllVar.routine_mode_score + middlefinalscore;
+            transfer = false;
+        }
+       
     }
 
     // Update is called once per frame
@@ -116,6 +142,8 @@ public class FocusColor : MonoBehaviour
                 timestart -= Time.deltaTime;
                 timenow = timestart;
                 timetext.text = "Time: " + Mathf.Round(timenow).ToString();
+                leveltimenow -= Time.deltaTime;
+                leveltimetext.text = "" + Mathf.Round(leveltimenow).ToString();
             }
             if (Mathf.Round(timenow) == 0)
             {
@@ -126,8 +154,31 @@ public class FocusColor : MonoBehaviour
                 timetext.text = "For Next Game!";
                 scoretext.text = "Press The Arrow!";
                 middlefinalscore = score;
-                AllVar.totalgold = AllVar.totalgold + middlefinalscore;
+                if (!SceneTransition.inselect)
+                {
+                    TransferScore();
+                }
+                
                 nextgamebtn.gameObject.SetActive(true);
+            }
+            if (Mathf.Round(leveltimenow)==0)
+            {
+                ChangeColors();
+                leveltime += 1;
+                leveltimenow = leveltime;
+
+                
+            }
+            if (tcnt==3 && leveltime>=2)
+            {
+                leveltime -= 1;
+                tcnt = 0;
+            }
+            if (wcnt==3)
+            {
+                
+                leveltime += 1;
+                wcnt = 0;
             }
         }
     }

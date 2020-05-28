@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Basket : MonoBehaviour
 {
     Collision C;
@@ -9,7 +9,9 @@ public class Basket : MonoBehaviour
     public int basketid;
     FruitNumber Fn;
     private bool can_gather = false;
-    public int gatherscore = 0;
+    public static int gatherscore = 0;
+    public Text scoretxt;
+
     private void OnTriggerEnter2D(Collider2D fallenobj)
     {
         Fn = FindObjectOfType<FruitNumber>();
@@ -17,7 +19,7 @@ public class Basket : MonoBehaviour
         if (fallenobj.gameObject.name == "MainCharacter")
         {
             can_gather = true;
-            Debug.Log("Çarpma len");
+            
         }
     }
 
@@ -29,7 +31,7 @@ public class Basket : MonoBehaviour
             top_fruit_id = C.gatheredfruits[C.fruitindex - 1];
             if (basketid == top_fruit_id)
             {
-                Debug.Log("Helal. Doğru sandık.");
+               
                 Fn.DecreaseNumber();
                 C.fruitindex--;
                 gatherscore++;
@@ -38,7 +40,7 @@ public class Basket : MonoBehaviour
             }
             else
             {
-                Debug.Log("Reis yanlış yapıyosun ya.");
+                Debug.Log("wrong");
                 can_gather = false;
             }
         }
@@ -51,6 +53,6 @@ public class Basket : MonoBehaviour
 
     void Update()
     {
-       
+        scoretxt.text = "Score: " + gatherscore*5;
     }
 }

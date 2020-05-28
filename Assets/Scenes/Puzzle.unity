@@ -148,8 +148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.27, y: 501.56}
-  m_SizeDelta: {x: 262.36, y: 82.92}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 479.47012}
+  m_SizeDelta: {x: 245.8, y: 127.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &51562612
 MonoBehaviour:
@@ -1248,7 +1248,7 @@ PrefabInstance:
     - target: {fileID: 6663928472356903484, guid: 6b9afd581887c4747aac7ad9965ea633,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9160372511873167319, guid: 6b9afd581887c4747aac7ad9965ea633,
         type: 3}
@@ -1773,6 +1773,7 @@ MonoBehaviour:
   timer: 0
   timeText: {fileID: 916751788}
   nextgamebtn: {fileID: 51562612}
+  score: 0
 --- !u!4 &1495415709
 Transform:
   m_ObjectHideFlags: 0

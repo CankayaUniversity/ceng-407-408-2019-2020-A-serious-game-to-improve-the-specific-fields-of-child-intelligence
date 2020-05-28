@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    public float speed;
+    public float speed = 1f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided");
+       // Debug.Log("Collided");
         speed = speed * -1;
     }
 

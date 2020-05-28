@@ -38,7 +38,29 @@ public class GameController : MonoBehaviour
 
     public Text timeText;
 
+    public int score;
 
+    string firstHint,secondHint;
+
+/*    void hint()
+    {
+        for (int i = 0; i < cards.Length; i++)
+        {
+            if (button[i].interactable)
+            {
+                button[i].
+                firstHint = gameCards[i].name;
+                for (int j = 0; j < 12; j++)
+                {
+                    if (gameCards[j].name==firstHint)
+                    {
+                        
+                    }
+                }
+            }
+            
+        }
+    }*/
     void GetButton()
     {
         GameObject[] cards = GameObject.FindGameObjectsWithTag("CardTag");
@@ -105,11 +127,13 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         if (firstSelectCard == secondSelectCard)
-        {
+        { 
+           
             yield return new WaitForSeconds(.5f);
+           
             button[firstSelectIndex].interactable = false;
             button[secondSelectIndex].interactable = false;
-
+        
             button[firstSelectIndex].image.color = new Color(0,0,0,0);
             button[secondSelectIndex].image.color = new Color(0, 0, 0, 0);
 
@@ -132,12 +156,31 @@ public class GameController : MonoBehaviour
         if (countCorrects == finishGuess)
         {
             Debug.Log("game finished");
-            AllVar.totalgold = AllVar.totalgold + 30;
             nextbtn.gameObject.SetActive(true);
             particles.SetActive(true);
             Debug.Log("it took "+countSelect+"guess");
-            
 
+            if (countSelect <= 10)
+            {
+                score = 100;
+            }
+            else if (countSelect <= 20)
+            {
+                score = 80;
+            }
+            else if (countSelect <= 30)
+            {
+                score = 60;
+            }
+            else
+                score = 40;
+
+
+            if (!SceneTransition.inselect)
+            {
+                AllVar.routine_mode_score = AllVar.routine_mode_score + score;
+            }
+            
           
         }
     }

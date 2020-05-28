@@ -26,8 +26,8 @@ public class SceneTransition : MonoBehaviour
         {
             TuTorialHandler.tutorial_online = false;
         }
-        Debug.Log("Tutorial Flag: " + TuTorialHandler.tutorial_online);
-        Debug.Log("Routine Flag: " + routine_online);
+        //Debug.Log("Tutorial Flag: " + TuTorialHandler.tutorial_online);
+        //Debug.Log("Routine Flag: " + routine_online);
         for (int i = 0; i < 7; i++)
         {
             temp_arr[i] = i;
@@ -86,6 +86,8 @@ public class SceneTransition : MonoBehaviour
         else
         {                                                 //If last game of routine mode was played.
             routine_online = false;
+            PlayerPrefs.SetInt("Rutin", 1);
+            AllVar.totalgold = AllVar.totalgold + 200;    //Reward for finishing Routine Mode
             StartCoroutine(LoadAnimation(0));
         }
     }

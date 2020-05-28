@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fruit
   - CardTag
+  - Settings
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -51,6 +53,9 @@ TagManager:
     locked: 0
   - name: MainLayer
     uniqueID: 1597681519
+    locked: 0
+  - name: MainFront
+    uniqueID: 2831629325
     locked: 0
   - name: MainCharScore
     uniqueID: 2938647173

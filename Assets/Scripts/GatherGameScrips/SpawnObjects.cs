@@ -84,13 +84,18 @@ public class SpawnObjects : MonoBehaviour
             if (Mathf.Round(timenow) == 0)
             {
                 gameended = true;
+                if (!SceneTransition.inselect)
+                {
+                    AllVar.routine_mode_score = AllVar.routine_mode_score + Basket.gatherscore;
+                }
+                
                 timetext.text = "";
             }
         }
         if (gameended)
         {
-            AllVar.totalgold = AllVar.totalgold + B.gatherscore;
             gatherbtn.GetComponent<Button>().interactable = false;
+            Basket.gatherscore = 0;
             nextgame.SetActive(true);
             StopCoroutine(spawnRoutine);
         }

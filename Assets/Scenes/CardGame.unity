@@ -5187,6 +5187,7 @@ MonoBehaviour:
   nextbtn: {fileID: 289903809}
   timer: 0
   timeText: {fileID: 1312258797}
+  score: 0
 --- !u!1 &289903807
 GameObject:
   m_ObjectHideFlags: 0
@@ -6170,7 +6171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

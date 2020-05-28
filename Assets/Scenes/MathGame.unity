@@ -263,11 +263,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1539587354824684352, guid: 6b9afd581887c4747aac7ad9965ea633,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8326696312215670855, guid: 6b9afd581887c4747aac7ad9965ea633,
         type: 3}
       propertyPath: m_FontData.m_FontSize
@@ -277,6 +272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539587354824684352, guid: 6b9afd581887c4747aac7ad9965ea633,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9afd581887c4747aac7ad9965ea633, type: 3}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 437785486}
   m_Layer: 5
   m_Name: Plarform2
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 1042105770}
   m_Layer: 5
   m_Name: Plarform3
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2675,6 +2675,8 @@ MonoBehaviour:
   answer: 000000000000000000000000
   res: 0
   loc: 0
+  tcnt: 0
+  wcnt: 0
   score: 0
   scoreText: {fileID: 1036920428}
   moving_platforms: {fileID: 1110677402}
@@ -3183,7 +3185,7 @@ GameObject:
   - component: {fileID: 2105844052}
   m_Layer: 5
   m_Name: Plarform1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3325,7 +3327,7 @@ GameObject:
   - component: {fileID: 2109032138}
   m_Layer: 5
   m_Name: Plarform4
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,6 +18,10 @@ public class PuzzleGameControl : MonoBehaviour
 
     public Button nextgamebtn;
 
+    public int score = 0;
+
+    bool transferflag = true;
+
 
     void Start()
     {
@@ -30,6 +34,17 @@ public class PuzzleGameControl : MonoBehaviour
     public void WinGame()
     {
         youWin = true;
+    }
+
+    public void TransferScore()
+    {
+        if (transferflag)
+        {
+            score = (int)timer;
+            score = 50 - score;
+            AllVar.routine_mode_score = AllVar.routine_mode_score + 2 * score;
+            transferflag = false;
+        }
     }
    
     void Update()
@@ -48,6 +63,12 @@ public class PuzzleGameControl : MonoBehaviour
             pictures[5].rotation.z == 0 )
         {
             youWin = true;
+            if (!SceneTransition.inselect)
+            {
+                TransferScore();
+            }
+          
+            
             winnerText.SetActive(true);
             nextgamebtn.gameObject.SetActive(true);
 

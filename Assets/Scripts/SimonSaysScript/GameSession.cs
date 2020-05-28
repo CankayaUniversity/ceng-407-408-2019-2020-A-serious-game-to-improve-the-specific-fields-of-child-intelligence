@@ -12,7 +12,7 @@ public class GameSession : MonoBehaviour
     public AudioSource[] sounds;
 
     private int select;
-    public float stay;
+    public float stay=1f;
     private float stayCounter;
     public float waitLight;
     private float waitCounter;
@@ -29,6 +29,7 @@ public class GameSession : MonoBehaviour
     public AudioSource incorrect;
     public Button nextgamebtn;
     public Text scoreText;
+    public static int simon_score;
     void Start()
     {
         nextgamebtn.gameObject.SetActive(false);
@@ -118,6 +119,7 @@ public class GameSession : MonoBehaviour
                     sequence.Add(select);
                     color[sequence[index]].color = new Color(color[sequence[index]].color.r, color[sequence[index]].color.g, color[sequence[index]].color.b, 1f);
                     sounds[sequence[index]].Play();
+                    stay -= 0.1f;
                     stayCounter = stay;
                     beLit = true;
                     gameActive = false;
@@ -128,8 +130,12 @@ public class GameSession : MonoBehaviour
             else
             {
                 nextgamebtn.gameObject.SetActive(true);
-                AllVar.totalgold = AllVar.totalgold + index*5;
-                Debug.Log("False");
+                simon_score = sequence.Count;
+                if (!SceneTransition.inselect)
+                {
+                    AllVar.routine_mode_score = AllVar.routine_mode_score + simon_score * 5 - 5;
+                }
+               
                 incorrect.Play();
                 stop = true;
                 gameActive = false;

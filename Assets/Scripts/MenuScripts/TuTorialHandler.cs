@@ -14,6 +14,8 @@ public class TuTorialHandler : MonoBehaviour
     CountDownGather Cdg;
     public Text middle_cd_text;
     public Text gather_game_cd_text;
+    public Sprite[] mascot_images;
+    public Image mascot;
     
     void Awake()
     {
@@ -27,6 +29,10 @@ public class TuTorialHandler : MonoBehaviour
         Cd = FindObjectOfType<CountDown>();
         Cdg = FindObjectOfType<CountDownGather>();
         gamescene = SceneManager.GetActiveScene().buildIndex;
+        mascot.GetComponent<Image>().sprite = mascot_images[AllVar.mascotindex];
+
+
+
         
         if (gamescene == 1)
         {
