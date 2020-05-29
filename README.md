@@ -2,7 +2,7 @@
 A serious game to improve the specific fields of child intelligence
  
  ## Install Apk
-For download and install the game  <a href="https://drive.google.com/open?id=1AgPuUIKQaWQFF2W_jVRHweTdIcOgXK0m">Download Link</a>  
+For download and install the game  <a href="https://drive.google.com/open?id=18qyc0M1GeNDARxZcc-ZIPrJAG2fsr5EK">Download Link</a>  
 
 ## Compilation
 &nbsp;&nbsp;  For compile this project Unity 2018.3.6f1 should be installed on computer. Newer versions should be suitable as well but since other versions can cause some problems it is highly recommended to compile project on this version. <br> <br>
