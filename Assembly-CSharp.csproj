@@ -63,6 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18N.cs" />
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18NAudioSource.cs" />
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18NImage.cs" />
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18NSprite.cs" />
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18NText.cs" />
+    <Compile Include="Assets\Honeti\I18N\Scripts\I18NTextMesh.cs" />
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
@@ -74,11 +80,19 @@
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Kullanılmayan\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+    <Compile Include="Assets\LerpTxT.cs" />
     <Compile Include="Assets\Scripts\Ball Tilt\BallControl.cs" />
     <Compile Include="Assets\Scripts\Ball Tilt\ExitHole.cs" />
     <Compile Include="Assets\Scripts\Ball Tilt\HoleTrigger.cs" />
     <Compile Include="Assets\Scripts\CardGameScrits\AddButtons.cs" />
     <Compile Include="Assets\Scripts\CardGameScrits\GameController.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\BackgroundStar.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\ColliderScript.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\Number.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\RecordsMG.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\SliderMath.cs" />
+    <Compile Include="Assets\Scripts\Catch Game\Spawner.cs" />
+    <Compile Include="Assets\Scripts\ChangeButtonColors.cs" />
     <Compile Include="Assets\Scripts\GatherGameScrips\Basket.cs" />
     <Compile Include="Assets\Scripts\GatherGameScrips\CharMovement.cs" />
     <Compile Include="Assets\Scripts\GatherGameScrips\Collision.cs" />
@@ -89,9 +103,13 @@
     <Compile Include="Assets\Scripts\GatherGameScrips\SpawnObjects.cs" />
     <Compile Include="Assets\Scripts\MathGame\MathGameManager.cs" />
     <Compile Include="Assets\Scripts\MathGame\MovePlatform.cs" />
+    <Compile Include="Assets\Scripts\MathGame\Records.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\AllVar.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\CategoryMaster.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\GameSettings.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\HourDetect.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\languageChanger.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Level.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\SaveLoad.cs" />
@@ -104,8 +122,11 @@
     <Compile Include="Assets\Scripts\MiddleMatters\ButtonHandler.cs" />
     <Compile Include="Assets\Scripts\MiddleMatters\CountDown.cs" />
     <Compile Include="Assets\Scripts\MiddleMatters\FocusColor.cs" />
+    <Compile Include="Assets\Scripts\MiddleMatters\RecordsMM.cs" />
     <Compile Include="Assets\Scripts\Puzzle\PuzzleGameControl.cs" />
     <Compile Include="Assets\Scripts\Puzzle\Rotate.cs" />
+    <Compile Include="Assets\Scripts\Real TimeCounter\RealTimeCounter.cs" />
+    <Compile Include="Assets\Scripts\Real TimeCounter\TimeMaster.cs" />
     <Compile Include="Assets\Scripts\SimonSaysScript\GameControllerSimon.cs" />
     <Compile Include="Assets\Scripts\SimonSaysScript\GameSession.cs" />
     <None Include="Assets\Kullanılmayan\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

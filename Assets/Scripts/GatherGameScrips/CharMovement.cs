@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
 
 
 public class CharMovement : MonoBehaviour
@@ -11,6 +12,7 @@ public class CharMovement : MonoBehaviour
     float velY;
     Rigidbody2D rigBody;
     Collision cs;
+    public Text speedtxt;
     int cnt;
     //bool facingright = true;
    
@@ -25,32 +27,40 @@ public class CharMovement : MonoBehaviour
     {
         if (cs.fruitindex == 1)
         {
+            
             movementspeed = 5.5f;
+            speedtxt.text = "Speed: 6";
         }
 
         else if (cs.fruitindex == 2)
         {
             movementspeed = 5f;
+            speedtxt.text = "Speed: 5";
         }
         else if (cs.fruitindex == 3)
         {
             movementspeed = 4.5f;
+            speedtxt.text = "Speed: 4";
         }
         else if (cs.fruitindex == 4)
         {
             movementspeed = 4f;
+            speedtxt.text = "Speed: 3";
         }
         else if (cs.fruitindex == 5)
         {
             movementspeed = 3.5f;
+            speedtxt.text = "Speed: 2";
         }
         else if (cs.fruitindex == 6)
         {
             movementspeed = 3f;
+            speedtxt.text = "Speed: 1";
         }
         else if (cs.fruitindex == 0)
         {
             movementspeed = 6f;
+            speedtxt.text = "Speed: 7";
         }
      
 

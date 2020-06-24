@@ -14,6 +14,7 @@ public class SceneTransition : MonoBehaviour
     int d;
     int holder;
     int temp;
+    bool hold_coroutine;
     public static bool routine_online = true;
     public static bool inselect = false;
     public GameObject tutorialprefab;
@@ -40,8 +41,10 @@ public class SceneTransition : MonoBehaviour
         
         if (inselect)
         {
+            hold_coroutine = true; // Rutin modun akışını kontrol eden 73. satırı askıya almak için.
+            Debug.Log("Girdim");
             inselect = false;                                         //To determine if current game is in select mode or routine mode.
-            StartCoroutine(LoadAnimationRoutine());
+            StartCoroutine(LoadAnimation(0));
         }
        else if (routine_array_created)
         {
@@ -65,7 +68,11 @@ public class SceneTransition : MonoBehaviour
             routine_array_created = false;
             StartCoroutine(LoadAnimationRoutine());
         }
-        StartCoroutine(LoadAnimationRoutine());
+        if (!hold_coroutine) //Bu olmazsa select game'de girdiğimiz herhangi bir oyundan sonra başka bir oyuna geçiyor. Menuye dönmüyor.
+        {
+            StartCoroutine(LoadAnimationRoutine());
+        }
+       
     }
        
     
@@ -81,6 +88,7 @@ public class SceneTransition : MonoBehaviour
         {
             transition.SetTrigger("Start");               //If routine mode keeps going.
             yield return new WaitForSeconds(2f);
+            hold_coroutine = false;
             SceneManager.LoadScene(scene_order[scenenum]);
         }
         else
@@ -97,6 +105,12 @@ public class SceneTransition : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(2f);             // For scene transition animation.
         SceneManager.LoadScene(x);
+    }
+
+    public void toRoutine()
+    {
+        routine_array_created = true;
+        LoadRoutine();
     }
     public void LoadWardrobe()
     {
@@ -140,6 +154,7 @@ public class SceneTransition : MonoBehaviour
     public void LoadSimonSays()
     {
         inselect = true;
+        Debug.Log(inselect);
         StartCoroutine(LoadAnimation(2));
     }
     public void LoadCardGame()
@@ -155,7 +170,7 @@ public class SceneTransition : MonoBehaviour
     public void LoadPuzzleGame()
     {
         inselect = true;
-        StartCoroutine(LoadAnimation(5));
+        StartCoroutine(LoadAnimation(14));
     }
     public void LoadBallGame()
     {
@@ -167,5 +182,11 @@ public class SceneTransition : MonoBehaviour
     {
         inselect = true;
         StartCoroutine(LoadAnimation(6));
+    }
+
+    public void LoadNumberGame()
+    {
+        inselect = true;
+        StartCoroutine(LoadAnimation(5));
     }
 }

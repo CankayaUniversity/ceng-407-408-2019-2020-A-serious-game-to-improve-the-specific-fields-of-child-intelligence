@@ -29,6 +29,7 @@ public class GameSession : MonoBehaviour
     public AudioSource incorrect;
     public Button nextgamebtn;
     public Text scoreText;
+    public Button startgamebtn;
     public static int simon_score;
     void Start()
     {
@@ -84,6 +85,7 @@ public class GameSession : MonoBehaviour
     }
     public void StartGame()
     {
+        startgamebtn.gameObject.SetActive(false);
         sequence.Clear();
         index = 0;
         input = 0;

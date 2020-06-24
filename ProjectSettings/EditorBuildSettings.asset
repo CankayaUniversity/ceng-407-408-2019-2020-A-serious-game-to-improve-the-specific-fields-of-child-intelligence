@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/GatherGame.unity
     guid: a3e93c1bc6e3590488a4e0ae9f53884c
   - enabled: 1
-    path: Assets/Scenes/Puzzle.unity
-    guid: 3b2fe60354dcac344a0d84326c347531
+    path: Assets/Scenes/CatchNumbers.unity
+    guid: 53e57a4cc0dfdfb44b2e7e520d132620
   - enabled: 1
     path: Assets/Scenes/MathGame.unity
     guid: cb7f6163265993a4fbcd4fc1c6c69e70
@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectGameScene.unity
     guid: 96b7bd233d8b5164c8235229ceb72b7d
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: 3b2fe60354dcac344a0d84326c347531
   m_configObjects: {}

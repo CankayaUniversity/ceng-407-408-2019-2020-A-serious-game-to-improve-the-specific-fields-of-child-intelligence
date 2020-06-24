@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
- 
+using System.IO;
 public class MathGameManager : MonoBehaviour
 {
     public Text[] numText = new Text[4];
@@ -34,14 +34,32 @@ public class MathGameManager : MonoBehaviour
     public Button nextgamebtn;
     public Text timetext;
     private float timenow;
+    public Text platform_speed_txt;
     public AudioSource src;
     public AudioClip[] clps = new AudioClip[2];
+
+    //----------Data Mining----------
+    //difficulty record
+    public float TotalAnsNum;
+    public int TimeResCount;
+    public Records records, OLDrecords;
+    public float AvgReactTime;
+    public float TotalTrue;
+    public float TotalFalse;
+    public float SumOfAns;
+    public float NotInTime;
+    public float RecordScore;
+    public float PlayerType;
+    public int temp;
+    //----------------------------
 
     void rng()
     {
         for (int i = 0; i < numbers.Length; i++)
         {
-            numbers[i] = Random.RandomRange(0, 10);
+            //----------Data Mining----------
+            numbers[i] = Random.RandomRange(0, temp);
+            //----------------------------
             numText[i].text = numbers[i].ToString();
 
         }
@@ -61,6 +79,39 @@ public class MathGameManager : MonoBehaviour
         nextgamebtn.gameObject.SetActive(false);
         time = 0.1f;
             src = gameObject.AddComponent<AudioSource>();
+
+        //----------------------Data mining-------------
+        OLDrecords = new Records();
+        records = new Records();
+        string path = "/PlayerRecords.json";
+        OLDrecords = JsonUtility.FromJson<Records>(File.ReadAllText(Application.persistentDataPath + path));
+        Debug.Log("Total OLDfalse = " + OLDrecords.TotalFalse);
+        Debug.Log("Total OLDtrue = " + OLDrecords.TotalTrue);
+        Debug.Log("Total OLDAvgReactTime = " + OLDrecords.AvgReactTime);
+        Debug.Log("Total OLDSumOfAns = " + OLDrecords.SumOfAns);
+        Debug.Log("OLDPlayerType = " + OLDrecords.PlayerType);
+        Debug.Log("OLDRecordScore = " + OLDrecords.RecordScore);
+
+        OLDrecords.Detect_Type(OLDrecords);
+
+        if (OLDrecords.result == 1)
+        {
+            temp = 10;
+            timestart = 60f;
+        }
+        if (OLDrecords.result == 2)
+        {
+            temp = 12;
+            timestart = 55f;
+        }
+        if (OLDrecords.result == 3)
+        {
+            temp = 14;
+            timestart = 50f;
+        }
+        //----------------------------
+
+
     }
 
     // Update is called once per frame
@@ -132,10 +183,7 @@ public class MathGameManager : MonoBehaviour
             if (tcnt==3)
             {
                 Debug.Log("hızlan");
-                for (int i = 0; i < 4; i++)
-                {
-                    platforms[i].GetComponent<MovePlatform>().speed += 1f;
-                }
+                
                 timeLimit -= 2f;
                 tcnt = 0;
             }
@@ -143,10 +191,7 @@ public class MathGameManager : MonoBehaviour
             if (wcnt == 3)
             {
                 Debug.Log("yavaşla");
-                for (int i = 0; i < 4; i++)
-                {
-                    platforms[i].GetComponent<MovePlatform>().speed -= 1f;
-                }
+               
                 timeLimit += 2f;
                 wcnt = 0;
             }
@@ -191,6 +236,9 @@ public class MathGameManager : MonoBehaviour
             scoreText.text = "Score:" + score.ToString("0");
             src.PlayOneShot(clps[0]);
             tcnt++;
+            //------------Data mining-------------
+            TotalTrue++;
+            //----------------------------
             Debug.Log(tcnt);
         }
         else
@@ -198,6 +246,9 @@ public class MathGameManager : MonoBehaviour
             Debug.Log("Wrong");
             tcnt = 0;
             wcnt++;
+            //------------Data mining-------------
+            TotalFalse++;
+            //----------------------------
             buttons[choice].image.color = Color.red;
             src.PlayOneShot(clps[1]);
             if (score>=10)
@@ -232,5 +283,49 @@ public class MathGameManager : MonoBehaviour
         }
         moving_platforms.gameObject.SetActive(false);
         gamestarted = false;
+
+        //------------Data mining-------------
+        PushRecords();
+        //----------------------------
     }
+
+    //------------Data mining-------------
+    public void PushRecords()
+    {
+
+        TotalAnsNum = TotalFalse + TotalTrue;
+        NotInTime = TimeResCount - TotalAnsNum;
+        TotalFalse = TotalFalse + NotInTime;
+        TotalAnsNum = TotalFalse + TotalTrue;
+        AvgReactTime = TotalAnsNum / 60f;
+        PlayerType = ((TotalFalse + TotalTrue + AvgReactTime + SumOfAns + RecordScore) / 5);
+
+        records.PlayerType = Euclidean_Distance(OLDrecords.PlayerType, PlayerType);
+        records.TotalFalse = Euclidean_Distance(OLDrecords.TotalFalse, TotalFalse);
+        records.TotalTrue = Euclidean_Distance(OLDrecords.TotalTrue, TotalTrue);
+        records.AvgReactTime = Euclidean_Distance(OLDrecords.AvgReactTime, AvgReactTime);
+        records.SumOfAns = Euclidean_Distance(OLDrecords.SumOfAns, SumOfAns);
+        records.RecordScore = Euclidean_Distance(OLDrecords.RecordScore, RecordScore);
+        records.Detect_Type(records);
+
+
+        Debug.Log(Application.persistentDataPath);
+        Debug.Log("Total false = " + records.TotalFalse);
+        Debug.Log("Total true = " + records.TotalTrue);
+        Debug.Log("Total AvgReactTime = " + records.AvgReactTime);
+        Debug.Log("Total SumOfAns = " + records.SumOfAns);
+        Debug.Log("RecordScore = " + RecordScore);
+        Debug.Log("PlayerType = " + PlayerType);
+
+        string path = "/PlayerRecords.json";
+        string jsonData = JsonUtility.ToJson(records, true);
+        File.WriteAllText(Application.persistentDataPath + path, jsonData);
+
+
+    }
+    public static float Euclidean_Distance(float x1, float x2)
+    {
+        return Mathf.Sqrt((x1 - x2) * (x1 - x2));
+    }
+    //----------------------------
 }

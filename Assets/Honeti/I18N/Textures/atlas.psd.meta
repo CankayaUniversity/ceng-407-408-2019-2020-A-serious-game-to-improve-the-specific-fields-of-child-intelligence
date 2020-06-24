@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: c6a032c4351f2234b8f4cf370e0875d9
+timeCreated: 1459335093
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: background
+    21300002: line_02
+    21300004: button_up
+    21300006: line_01
+    21300008: button_down
+    21300010: button_hover
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: background
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1031
+        width: 1023
+        height: 1017
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -511.5, y: 508.5}
+        - {x: -511.5, y: -508.5}
+        - {x: 511.5, y: -508.5}
+        - {x: 511.5, y: 508.5}
+    - name: line_02
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 1034
+        width: 11
+        height: 939
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: button_up
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 923
+        width: 263
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 21, z: 25, w: 20}
+      outline:
+      - - {x: -129.5, y: 37}
+        - {x: -131.5, y: 35}
+        - {x: -131.5, y: -34}
+        - {x: -128.5, y: -37}
+        - {x: 128.5, y: -37}
+        - {x: 131.5, y: -34}
+        - {x: 131.5, y: 35}
+        - {x: 129.5, y: 37}
+    - name: line_01
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 734
+        width: 745
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: button_down
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 817
+        width: 263
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 38, y: 30, z: 37, w: 27}
+      outline:
+      - - {x: -128.5, y: 31}
+        - {x: -128.5, y: -34}
+        - {x: 128.5, y: -34}
+        - {x: 128.5, y: 31}
+        - {x: 124.5, y: 35}
+        - {x: -124.5, y: 35}
+    - name: button_hover
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 817
+        width: 263
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 27, y: 25, z: 30, w: 24}
+      outline:
+      - - {x: -129.5, y: 37}
+        - {x: -131.5, y: 35}
+        - {x: -131.5, y: -34}
+        - {x: -128.5, y: -37}
+        - {x: 128.5, y: -37}
+        - {x: 131.5, y: -34}
+        - {x: 131.5, y: 35}
+        - {x: 129.5, y: 37}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

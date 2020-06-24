@@ -31,8 +31,6 @@ public class TuTorialHandler : MonoBehaviour
         gamescene = SceneManager.GetActiveScene().buildIndex;
         mascot.GetComponent<Image>().sprite = mascot_images[AllVar.mascotindex];
 
-
-
         
         if (gamescene == 1)
         {
@@ -78,11 +76,11 @@ public class TuTorialHandler : MonoBehaviour
         }
         else if (gamescene == 5)
         {
-            Title.text = "Rotate and Solve !";
-            Rules.text = "-There is a picture divided and its pieces rotated." + "\n"
-                + "-By pressing a piece, you rotate them clockwise." + "\n"
-                + "-Try to rotate every piece to see the picture !";
-
+            
+            Title.text = "Catch Numbers";
+            Rules.text = "-Numbers are falling down from sky!" + "\n"
+                + "-You have to save them from falling by pressing them." + "\n"
+                + "-After you press two numbers, they will add up." + "\n" + "Pick the right answer to save them.";
         }
 
         else if (gamescene == 7)
@@ -103,6 +101,14 @@ public class TuTorialHandler : MonoBehaviour
                 + "-You have to find the answer by solving operation and press the right answer." + "\n"
                 + "-Good Luck!";
          }
+
+        else if (gamescene == 14)
+        {
+            Title.text = "Rotate and Solve !";
+            Rules.text = "-There is a picture divided and its pieces rotated." + "\n"
+                + "-By pressing a piece, you rotate them clockwise." + "\n"
+                + "-Try to rotate every piece to see the picture !";
+        }
     }
 
      public void CloseTutorial()
@@ -123,6 +129,7 @@ public class TuTorialHandler : MonoBehaviour
 
     public void TutorialDissapear()
     {
+        Time.timeScale = 1f;
         this.GetComponentInChildren<CanvasGroup>().alpha = 0;
         this.GetComponentInChildren<CanvasGroup>().interactable = false;
         this.GetComponentInChildren<CanvasGroup>().blocksRaycasts = false;

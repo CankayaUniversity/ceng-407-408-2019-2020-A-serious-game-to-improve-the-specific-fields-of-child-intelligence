@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
+using System.IO;
 
 public class AllVar : MonoBehaviour
 {
@@ -28,14 +29,60 @@ public class AllVar : MonoBehaviour
     public static int routine_mode_score = 0;
     int counter;
     public bool routine_online_for_save = true;
+    int fileflag = 0;
+    Records records;
+    RecordsMM recordsmm;
+    RecordsMG recordsmg;
+    public Text timer;
+    public float sessionTime =0f;
+    public float min;
+    public float sec;
+    
+    private void Update()
+    {
+        sessionTime = 900- (int)Time.time;
+        min = (int)sessionTime / 60;
+        sec = (int)sessionTime % 60;
+        timer.text =   min.ToString() + " : " + sec.ToString();
+        if (Time.time >= 900)
+        {
+            denypanel.gameObject.SetActive(true);
+            timer.gameObject.SetActive(false);
+        }
 
+       
+        Debug.Log(Time.time);
+    }
     void Awake()
     {
+
+        if (!PlayerPrefs.HasKey("FileFlag"))
+        {
+            PlayerPrefs.SetInt("FileFlag", fileflag);
+            records = new Records();
+            recordsmm = new RecordsMM();
+            recordsmg = new RecordsMG();
+            string path = "/PlayerRecords.json";
+            string jsonData = JsonUtility.ToJson(records, true);
+            File.WriteAllText(Application.persistentDataPath + path, jsonData);
+            path = "/PlayerRecordsMM.json";
+            string jsonData1 = JsonUtility.ToJson(recordsmm, true);
+            File.WriteAllText(Application.persistentDataPath + path, jsonData1);
+            path = "/PlayerRecordsMG.json";
+            string jsonData2 = JsonUtility.ToJson(recordsmg, true);
+            File.WriteAllText(Application.persistentDataPath + path, jsonData2);
+            SaveGame();
+            Debug.Log("Dosyalar Oluşturuldu.");
+        } 
+
+        //PlayerPrefs.DeleteKey("FileFlag");
         if (!loadflag)
         {
             LoadGame();
             loadflag = true;
         }
+
+       
 
         if (HourDetect.resetflag)
         {
@@ -77,10 +124,7 @@ public class AllVar : MonoBehaviour
     }
     void Start()
     {
-        if (Time.time >= 1800)
-        {
-            denypanel.gameObject.SetActive(true);
-        }
+       
         Debug.Log(Time.time);
         Mascot.GetComponent<SpriteRenderer>().sprite = mascotSprites[mascotindex];
         if (!SceneTransition.routine_online)

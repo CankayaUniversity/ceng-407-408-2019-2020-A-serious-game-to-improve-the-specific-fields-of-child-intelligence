@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 public class FocusColor : MonoBehaviour
 {
     public SpriteRenderer[] colorbuttons;
@@ -22,16 +22,20 @@ public class FocusColor : MonoBehaviour
     public bool gameended = false;
     public static int middlefinalscore;
     public Button nextgamebtn;
-    public bool transfer = true;
+    public bool transfer = false;
     public Text leveltimetext;
     private float leveltime = 5f;
     private float leveltimenow;
     int tcnt = 0;
     int wcnt = 0;
-
+    
     public bool gamestart = false;
 
-
+    //------Data mining---------
+    //records
+    RecordsMM NEWrecords, OLDrecords;
+    int playertype;
+    //----------------------------
 
 
 
@@ -45,7 +49,9 @@ public class FocusColor : MonoBehaviour
             wcnt = 0;
             tcnt++;
             leveltimenow = leveltime;
-            
+            //------Data mining---------
+            NEWrecords.TotalTrue++;
+            //----------------------------
 
 
         }
@@ -57,9 +63,11 @@ public class FocusColor : MonoBehaviour
             tcnt = 0;
             wcnt++;
             leveltimenow = leveltime;
-
+            //------Data mining---------
+            NEWrecords.TotalFalse++;
+            //----------------------------
         }
-
+        NEWrecords.RecordScore = (float)score;
         SwapClouds();
     }
 
@@ -100,6 +108,48 @@ public class FocusColor : MonoBehaviour
     {
         nextgamebtn.gameObject.SetActive(false);
         score = 0;
+        timestart = 60f;
+        leveltime = 5f;
+
+        //------Data mining---------
+        NEWrecords = new RecordsMM();
+        OLDrecords = new RecordsMM();
+        
+        string path = "/PlayerRecordsMM.json";
+
+            OLDrecords = JsonUtility.FromJson<RecordsMM>(File.ReadAllText(Application.persistentDataPath + path));
+            if (OLDrecords.result == 1)
+            {
+                leveltime = 6f;
+                timestart = 65f;
+                Debug.Log("player type : " + OLDrecords.result);
+            }
+            if (OLDrecords.result == 2)
+            {
+                leveltime = 4.5f;
+                timestart = 55f;
+                Debug.Log("player type : " + OLDrecords.result);
+            }
+            if (OLDrecords.result == 3)
+            {
+                leveltime = 4f;
+                timestart = 50f;
+                Debug.Log("player type : " + OLDrecords.result);
+            }
+            
+            Debug.Log("Total OLDfalse = " + OLDrecords.TotalFalse);
+            Debug.Log("Total OLDtrue = " + OLDrecords.TotalTrue);
+            Debug.Log("Total OLDAvgReactTime = " + OLDrecords.AvgReactTime);
+            Debug.Log("OLDRecordScore = " + OLDrecords.RecordScore);
+            Debug.Log("OLDPlayerType = " + OLDrecords.PlayerType);
+            Debug.Log("OLDresult = " + OLDrecords.result);
+
+        
+        //----------------------------
+
+
+
+
     }
     void Start()
     {
@@ -157,8 +207,12 @@ public class FocusColor : MonoBehaviour
                 if (!SceneTransition.inselect)
                 {
                     TransferScore();
+                    transfer = false;
                 }
-                
+                //-----------Data mining ---------
+                NEWrecords.AvgReactTime = ((NEWrecords.TotalFalse + NEWrecords.TotalTrue) / 60f);
+                NEWrecords.PushRecords(NEWrecords, OLDrecords);
+                //----------------------------
                 nextgamebtn.gameObject.SetActive(true);
             }
             if (Mathf.Round(leveltimenow)==0)

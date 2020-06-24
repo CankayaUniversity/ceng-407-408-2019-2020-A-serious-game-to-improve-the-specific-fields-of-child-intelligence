@@ -10,9 +10,13 @@ public class GameController : MonoBehaviour
 
     public List<Button> button = new List<Button>();
 
+    public List<Button> hintarray = new List<Button>();
+
     public Sprite[] cards;
 
     public List<Sprite> gameCards = new List<Sprite>();
+
+    public List<Sprite> hintgameCards = new List<Sprite>();
 
     private bool firstSelect;
         
@@ -38,29 +42,37 @@ public class GameController : MonoBehaviour
 
     public Text timeText;
 
+    int[] pairs;
+
     public int score;
 
     string firstHint,secondHint;
 
-/*    void hint()
-    {
-        for (int i = 0; i < cards.Length; i++)
-        {
-            if (button[i].interactable)
-            {
-                button[i].
-                firstHint = gameCards[i].name;
-                for (int j = 0; j < 12; j++)
-                {
-                    if (gameCards[j].name==firstHint)
-                    {
-                        
-                    }
-                }
-            }
-            
-        }
-    }*/
+    public  int cn1 = 0;
+    public  int cn2 = 0;
+    public bool isFinished = false;
+
+     
+    //public void GiveHint()
+    //{
+    //    for (cn1 = 0; cn1 < 12; cn1++)
+    //    {
+    //        for (cn2 = 0; cn2 < 12; cn2++)
+    //        {
+    //            if (gameCards[cn1].name == gameCards[cn2].name)
+    //            {
+    //                Debug.Log(gameCards[cn1].name);
+    //                Debug.Log(gameCards[cn2].name);
+    //                button[cn1].image.color = Color.red;
+    //                button[cn2].image.color = Color.red;
+    //                break;
+    //            }
+    //            break;
+    //        }
+    //    }
+    //}
+
+
     void GetButton()
     {
         GameObject[] cards = GameObject.FindGameObjectsWithTag("CardTag");
@@ -156,6 +168,7 @@ public class GameController : MonoBehaviour
         if (countCorrects == finishGuess)
         {
             Debug.Log("game finished");
+            isFinished = true;
             nextbtn.gameObject.SetActive(true);
             particles.SetActive(true);
             Debug.Log("it took "+countSelect+"guess");
@@ -212,7 +225,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        timeText.text = " Time: " + (int)timer;
+        if (!isFinished)
+        {
+            timer += Time.deltaTime;
+            timeText.text = " Time: " + (int)timer;
+        }
     }
 }

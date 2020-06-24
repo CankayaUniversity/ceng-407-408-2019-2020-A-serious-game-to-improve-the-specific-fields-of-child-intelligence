@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using Honeti;
 public class SettingManager : MonoBehaviour
 {
     public Slider soundVolumeSlider;
     public Slider musicVolumeSlider;
     public Button applyButton;
-
+    public Scrollbar languageScroll;
     public AudioSource soundSource;
     public AudioSource musicSource;
     public GameSettings gameSettings;
-
+    public int language;
+    
+    private void Start()
+    {
+        selectLanguage();
+    }
     void OnEnable()
     {
 
@@ -23,7 +29,8 @@ public class SettingManager : MonoBehaviour
         soundVolumeSlider.onValueChanged.AddListener(delegate { OnSoundVolumeChange(); });
         musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChange(); });
         applyButton.onClick.AddListener(delegate { OnApplyButtonClick(); });
-
+     
+        //languageDropdown.onValueChanged.AddListener(delegate {selectLanguage(); });
         //LoadSettings();
     }
 
@@ -38,7 +45,9 @@ public class SettingManager : MonoBehaviour
     }
     public void OnApplyButtonClick()
     {
-       SaveSettings();
+        selectLanguage();
+        SaveSettings();
+       
     }
     
     public void SaveSettings()
@@ -54,7 +63,26 @@ public class SettingManager : MonoBehaviour
 
 
 
-    }  
+    }
+    public void selectLanguage()
+    {
+        
+        if (languageScroll.value==0)
+        {
+            Debug.Log("English");
+            language = 0;
+            FindObjectOfType<I18N>().setLanguage("0");
+        }
+        else if (languageScroll.value==1)
+        {
+            Debug.Log("Türkçe");
+            language = 1;
+            FindObjectOfType<I18N>().setLanguage("1");
+
+            //  FindObjectOfType<I18n>();
+        }
+
+    }
 }
     
 

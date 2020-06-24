@@ -24,11 +24,24 @@ public class BallControl : MonoBehaviour
 
     public Button restartgamebtn;
 
+    public Text winText;
     
+
+  
+
+    public void winBut()
+    {
+        youWin = true;
+    }
+    public void loseBut()
+    {
+        isDead = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+       // loseText.SetActive(false);
+        winText.gameObject.SetActive(false);
 
         nextgamebtn.gameObject.SetActive(false);
 
@@ -60,6 +73,10 @@ public class BallControl : MonoBehaviour
             anim.SetBool("BallDead", isDead);
 
             restartgamebtn.gameObject.SetActive(true);
+
+            //loseText.SetActive(true);
+            winText.gameObject.SetActive(true);
+            winText.text = "You Lose!";
         }
 
         if (youWin)
@@ -72,7 +89,10 @@ public class BallControl : MonoBehaviour
 
             anim.SetBool("BallDead",true);
 
-            
+            //winText.SetActive(true);
+            winText.gameObject.SetActive(true);
+            winText.text = "You Win!";
+
         }
     }
 

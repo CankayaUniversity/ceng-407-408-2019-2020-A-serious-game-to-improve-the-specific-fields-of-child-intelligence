@@ -16,7 +16,7 @@ public class WardrobePurchase : MonoBehaviour
     void Start()
     {
         GatherVariables();
-        btntxt[6].text = "Your Gold: " + gold.ToString();
+        btntxt[6].text = " " + gold.ToString();
 
     }
 
@@ -35,7 +35,7 @@ public class WardrobePurchase : MonoBehaviour
                 gold = gold - 100;
                 btntxt[0].text = "Use";
                 mascotindex = 0;
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
@@ -60,7 +60,7 @@ public class WardrobePurchase : MonoBehaviour
                 gold = gold - 200;
                 btntxt[1].text = "Use";
                 mascotindex = 1;
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
@@ -85,7 +85,7 @@ public class WardrobePurchase : MonoBehaviour
                 btntxt[2].text = "Use";
                 mascotindex = 2;
                 Debug.Log(gold);
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
@@ -111,7 +111,7 @@ public class WardrobePurchase : MonoBehaviour
                 btntxt[3].text = "Use";
                 mascotindex = 3;
                 Debug.Log(gold);
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
@@ -137,7 +137,7 @@ public class WardrobePurchase : MonoBehaviour
                 btntxt[4].text = "Use";
                 mascotindex = 4;
                 Debug.Log(gold);
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
@@ -163,7 +163,7 @@ public class WardrobePurchase : MonoBehaviour
                 btntxt[5].text = "Use";
                 mascotindex = 5;
                 Debug.Log(gold);
-                btntxt[6].text = "Your Gold: " + gold.ToString();
+                btntxt[6].text = "" + gold.ToString();
             }
             else
             {
