@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameSession : MonoBehaviour
@@ -31,6 +32,7 @@ public class GameSession : MonoBehaviour
     public Text scoreText;
     public Button startgamebtn;
     public static int simon_score;
+    public Button restartbtn;
     void Start()
     {
         nextgamebtn.gameObject.SetActive(false);
@@ -131,6 +133,10 @@ public class GameSession : MonoBehaviour
             }
             else
             {
+                if (SceneTransition.inselect)
+                {
+                    restartbtn.gameObject.SetActive(true);
+                }
                 nextgamebtn.gameObject.SetActive(true);
                 simon_score = sequence.Count;
                 if (!SceneTransition.inselect)
@@ -143,5 +149,10 @@ public class GameSession : MonoBehaviour
                 gameActive = false;
             }
         }
+    }
+
+    public void RestartSimon()
+    {
+        SceneManager.LoadScene("SimonSays");
     }
 }

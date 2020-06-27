@@ -66,10 +66,10 @@ public class TuTorialHandler : MonoBehaviour
         else if (gamescene == 4)
         {
             Title.text = "Catch and Store !";
-            Rules.text = "-Apples and peppers are falling from the sky !" + "\n"
+            Rules.text = "-Bananas and tomatoes are falling from the sky !" + "\n"
                 + "-Your job is to catch them." + "\n"
                 + "-There are baskets on your right and left." + "\n"
-                + "-Left is for peppers, right is for apples" + "\n"
+                + "-Left is for bananas, right is for tomatoes" + "\n"
                 + "-You can catch more than one item but you can only store the item on the top." + "\n"
                 + "-You can only hold six items." + "\n"
                 + "-Good Luck!";
@@ -124,6 +124,10 @@ public class TuTorialHandler : MonoBehaviour
         {
             Cdg.countdownTime = 4;
             gather_game_cd_text.text = Cdg.countdownTime.ToString();
+        }
+        else if (gamescene == 3)
+        {
+            GameController.isFinished = false;
         }
     }
 

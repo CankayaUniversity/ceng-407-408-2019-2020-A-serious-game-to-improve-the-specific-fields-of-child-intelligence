@@ -11,6 +11,7 @@ public class FruitNumber : MonoBehaviour
 
     public void IncreaseNumber()
     {
+
         spriteindex++;
         number.GetComponent<SpriteRenderer>().sprite = currentfruitnumber[spriteindex];
     }

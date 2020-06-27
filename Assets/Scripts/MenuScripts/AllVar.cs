@@ -14,9 +14,9 @@ public class AllVar : MonoBehaviour
     static public int app_open_index;
     static public  int totalgold = 0;
     static public int mascotindex = 0;
-    static public bool[] unlocked_clothe = new bool[] { false, false, false };
+    static public bool[] unlocked_clothe = new bool[] { true, false, false, false, false, false };
     public int saved_totalgold;
-    public bool[] saved_unlocked_clothe = new bool[] { false, false, false };
+    public bool[] saved_unlocked_clothe = new bool[] { true, false, false, false, false, false };
     public int saved_mascotindex;
     static public bool loadflag = false;
     public GameObject Mascot;
@@ -37,7 +37,7 @@ public class AllVar : MonoBehaviour
     public float sessionTime =0f;
     public float min;
     public float sec;
-    
+    public Image routineoff;
     private void Update()
     {
         sessionTime = 900- (int)Time.time;
@@ -51,7 +51,7 @@ public class AllVar : MonoBehaviour
         }
 
        
-        Debug.Log(Time.time);
+        
     }
     void Awake()
     {
@@ -127,15 +127,14 @@ public class AllVar : MonoBehaviour
        
         Debug.Log(Time.time);
         Mascot.GetComponent<SpriteRenderer>().sprite = mascotSprites[mascotindex];
-        if (!SceneTransition.routine_online)
+        if (!SceneTransition.routine_array_created)
         {
             routine_button.GetComponent<Button>().interactable = false;
-            routine_button.GetComponentInChildren<Text>().text = "Routine Mode" ;
         }
         if (PlayerPrefs.GetInt("Rutin") == 1)
         {
+            routineoff.gameObject.SetActive(true);
             routine_button.GetComponent<Button>().interactable = false;
-            routine_button.GetComponentInChildren<Text>().text = "Routine Mode";
         }
     } 
 
@@ -143,7 +142,7 @@ public class AllVar : MonoBehaviour
     {
         saved_mascotindex = mascotindex;
         saved_totalgold = totalgold;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             saved_unlocked_clothe[i] = unlocked_clothe[i];
         }
@@ -163,12 +162,12 @@ public class AllVar : MonoBehaviour
         }
         
         saved_totalgold = data.playercurrency;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             saved_unlocked_clothe[i] = data.player_unlocked_outfit[i];
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             unlocked_clothe[i] = saved_unlocked_clothe[i];
         }
@@ -192,8 +191,8 @@ public class AllVar : MonoBehaviour
     {
         PlayerPrefs.SetInt("Rutin",0);
         mascotindex = 0;
-        totalgold = 1000;
-        unlocked_clothe = new bool[] { false, false, false };
+        totalgold = 10000;
+        unlocked_clothe = new bool[] { true, false, false, false, false, false };
         app_open_count = new bool[] { false, false, false };
         SaveGame();
         SceneManager.LoadScene("MainMenuMindGarden");

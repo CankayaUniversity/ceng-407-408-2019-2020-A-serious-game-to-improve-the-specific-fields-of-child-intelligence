@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
 
     public  int cn1 = 0;
     public  int cn2 = 0;
-    public bool isFinished = false;
+    public static bool isFinished = false;
 
      
     //public void GiveHint()
@@ -211,6 +211,10 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneTransition.inselect)
+        {
+            isFinished = true;
+        }
         
         GetButton();
         AddListen();

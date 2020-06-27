@@ -21,8 +21,11 @@ public class Collision : MonoBehaviour
         if (fallenobj.gameObject.tag == "Fruit")
         {
             fallenfruits = fallenobj.gameObject.GetComponent<FallenObjects>().fallenobj_id;
+
+           
+                gathered = true;
             
-            gathered = true;
+            
             destroyflag = true;
             Fc = FindObjectOfType<FruitNumber>();
             Fc.IncreaseNumber();

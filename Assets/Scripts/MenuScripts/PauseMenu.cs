@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void returnMenu()
     {
         SceneTransition.inselect = false;
-        SceneTransition.routine_array_created = false;
+        //SceneTransition.routine_array_created = false;
         FindObjectOfType<SceneTransition>().LoadBack();
         pauseMenuUı.SetActive(false);
         Time.timeScale = 1f;

@@ -110,6 +110,7 @@ public class SceneTransition : MonoBehaviour
     public void toRoutine()
     {
         routine_array_created = true;
+        PlayerPrefs.SetInt("Rutin", 1);
         LoadRoutine();
     }
     public void LoadWardrobe()

@@ -33,9 +33,10 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[0] = true;
                 gold = gold - 100;
-                btntxt[0].text = "Use";
+                btntxt[0].text = "Unlocked";
                 mascotindex = 0;
                 btntxt[6].text = "" + gold.ToString();
+
             }
             else
             {
@@ -58,7 +59,7 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[1] = true;
                 gold = gold - 200;
-                btntxt[1].text = "Use";
+                btntxt[1].text = "Unlocked";
                 mascotindex = 1;
                 btntxt[6].text = "" + gold.ToString();
             }
@@ -82,7 +83,7 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[2] = true;
                 gold = gold - 300;
-                btntxt[2].text = "Use";
+                btntxt[2].text = "Unlocked";
                 mascotindex = 2;
                 Debug.Log(gold);
                 btntxt[6].text = "" + gold.ToString();
@@ -108,7 +109,7 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[3] = true;
                 gold = gold - 400;
-                btntxt[3].text = "Use";
+                btntxt[3].text = "Unlocked";
                 mascotindex = 3;
                 Debug.Log(gold);
                 btntxt[6].text = "" + gold.ToString();
@@ -121,7 +122,7 @@ public class WardrobePurchase : MonoBehaviour
         }
         else
         {
-            mascotindex = 2;
+            mascotindex = 3;
             Debug.Log("You already purchased that item.");
         }
     }
@@ -134,7 +135,7 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[4] = true;
                 gold = gold - 500;
-                btntxt[4].text = "Use";
+                btntxt[4].text = "Unlocked";
                 mascotindex = 4;
                 Debug.Log(gold);
                 btntxt[6].text = "" + gold.ToString();
@@ -160,7 +161,7 @@ public class WardrobePurchase : MonoBehaviour
             {
                 temp_unlocked_clothe[5] = true;
                 gold = gold - 600;
-                btntxt[5].text = "Use";
+                btntxt[5].text = "Unlocked";
                 mascotindex = 5;
                 Debug.Log(gold);
                 btntxt[6].text = "" + gold.ToString();
@@ -187,7 +188,7 @@ public class WardrobePurchase : MonoBehaviour
     {
         gold = AllVar.totalgold;
         mascotindex = AllVar.mascotindex;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             temp_unlocked_clothe[i] = AllVar.unlocked_clothe[i];
             if (temp_unlocked_clothe[i])
@@ -202,7 +203,7 @@ public class WardrobePurchase : MonoBehaviour
         AllVar.mascotindex = mascotindex;
         Debug.Log("Gönderilen gold: " + gold);
         AllVar.totalgold = gold;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             AllVar.unlocked_clothe[i] = temp_unlocked_clothe[i];
         }

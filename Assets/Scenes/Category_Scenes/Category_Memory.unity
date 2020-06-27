@@ -359,7 +359,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Card Game
+  m_Text: Find Duplicates
 --- !u!222 &600623342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -749,6 +749,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7305526116035981129, guid: 182055ef27ec86c41b97bd778ba9f269,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7305526114754555154, guid: 182055ef27ec86c41b97bd778ba9f269,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -758,11 +763,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305526116035981129, guid: 182055ef27ec86c41b97bd778ba9f269,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182055ef27ec86c41b97bd778ba9f269, type: 3}
